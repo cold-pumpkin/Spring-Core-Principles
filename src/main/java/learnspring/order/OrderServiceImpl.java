@@ -1,20 +1,20 @@
 package learnspring.order;
 
 import learnspring.discount.DiscountPolicy;
-import learnspring.discount.FixedDiscountPolicy;
-import learnspring.discount.RateDiscountPolicy;
 import learnspring.member.Member;
 import learnspring.member.MemberRepository;
-import learnspring.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    // 인터페이스에만 의존하도록 수정
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
-    /** 할인 정책 변경 시 클라이언트 코드를 바꿔야하는 문제 발생 **/
-    //private final DiscountPolicy discountPolicy = new FixedDiscountPolicy();
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-
+    // 생성자를 통한 의존관계 주입 (AppConfig를 통해 구현체가 주입됨)
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
