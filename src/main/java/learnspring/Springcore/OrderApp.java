@@ -10,8 +10,13 @@ import learnspring.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+        //MemberService memberService = new MemberServiceImpl();
+        //OrderService orderService = new OrderServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         // 회원 등록 후 주문
         Long memberId = 1L;
@@ -21,5 +26,6 @@ public class OrderApp {
         Order order = orderService.createOrder(memberId, "itemA", 10000);
         System.out.println(order);
         System.out.println(order.calculatePrice());
+
     }
 }
