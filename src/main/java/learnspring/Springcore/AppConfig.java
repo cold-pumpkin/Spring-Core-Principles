@@ -2,6 +2,7 @@ package learnspring.Springcore;
 
 import learnspring.discount.DiscountPolicy;
 import learnspring.discount.FixedDiscountPolicy;
+import learnspring.discount.RateDiscountPolicy;
 import learnspring.member.MemberRepository;
 import learnspring.member.MemberService;
 import learnspring.member.MemberServiceImpl;
@@ -24,7 +25,8 @@ public class AppConfig {  // 역할에 따른 구현으로 리팩토링
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixedDiscountPolicy();
+        //return new FixedDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 
 }
