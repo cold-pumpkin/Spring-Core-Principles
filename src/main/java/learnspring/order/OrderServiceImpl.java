@@ -3,14 +3,17 @@ package learnspring.order;
 import learnspring.discount.DiscountPolicy;
 import learnspring.member.Member;
 import learnspring.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     // 인터페이스에만 의존하도록 수정
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    // 생성자를 통한 의존관계 주입 (AppConfig를 통해 구현체가 주입됨)
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
