@@ -3,10 +3,11 @@ package learnspring.discount;
 import learnspring.member.Grade;
 import learnspring.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("mainDiscountPolicy")
+@Primary
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private static final int discountPercent = 10;
