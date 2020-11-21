@@ -19,7 +19,8 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springfra가mework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'  // web 라이브러리 추
 	implementation 'javax.inject:javax.inject:1' // JSR-330 Provider
 
 	//lombok 라이브러리 추가 시작
